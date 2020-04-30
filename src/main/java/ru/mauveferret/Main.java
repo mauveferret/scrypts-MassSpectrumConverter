@@ -98,14 +98,19 @@ public class Main  {
 
         ms = (hours*3600+minutes*60+seconds)*1000+ms;
 
-        if (isFirstDate)
+        /*if (isFirstDate)
         {
             firstDate = ms;
             isFirstDate = false;
         }
 
-        return ms-firstDate;
+         */
+
+        // made to write dates from local zero
+        //return ms-firstDate;
+        return ms;
     }
+
 
     private static List<String> searching(File rootDir) {
         List<String> result = new ArrayList<>();
