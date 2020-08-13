@@ -5,14 +5,16 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.net.URISyntaxException;
 import java.util.*;
+import java.util.stream.Stream;
 
 
 public class Main  {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws URISyntaxException {
         Scanner scanner = new Scanner(System.in);
-        String currentJar = Main.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+        String currentJar = Main.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath();
         String currentDir = new File(currentJar).getParent();
         System.out.print("Do you want to get time dependencies? If no, i'l make mass spectrum (Y/N or Д/Н) ");
         String answer = scanner.nextLine();
@@ -38,7 +40,7 @@ public class Main  {
         try {
             //String timeLineForMassSpectrum = "AtomicNumber/time ";
             String dir = "";
-            FileOutputStream spectrumWriter = new FileOutputStream(new File("shit"));
+            FileOutputStream spectrumWriter= null;
             if (doTimeDependencies)
             {
                 //creating dir far all masses
